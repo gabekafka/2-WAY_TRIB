@@ -61,10 +61,10 @@ for i, P in enumerate(column_points):
         if region.is_empty: break
     regions.append(region)
 
-# --- Find and highlight largest 10 area regions ---
+# --- Find and highlight largest 12 area regions ---
 areas = [r.area for r in regions]
-largest_idxs = sorted(range(len(areas)), key=lambda i: areas[i], reverse=True)[:10]
-print("Largest 10 tributary areas:")
+largest_idxs = sorted(range(len(areas)), key=lambda i: areas[i], reverse=True)[:12]
+print("Largest 12 tributary areas:")
 for rank, idx in enumerate(largest_idxs, 1):
     print(f"{rank}. Column {idx} at ({points_df['x'][idx]:.2f}, {points_df['y'][idx]:.2f}): {areas[idx]:.2f} sq ft")
 
@@ -88,12 +88,12 @@ for i, region in enumerate(regions):
         color = 'skyblue'
         edge = 'blue'
     ax.add_patch(plt.Polygon(region.exterior.coords, facecolor=color, edgecolor=edge, alpha=0.4))
-    # Annotate area for largest 10
+    # Annotate area for largest 12
     if i in largest_idxs:
         centroid = region.centroid
         ax.text(centroid.x, centroid.y, f"{areas[i]:.1f} sf", color='red', fontsize=10, ha='center', va='center', fontweight='bold')
 
-ax.set_title("Tributary Areas (Largest 10 Highlighted)")
+ax.set_title("Tributary Areas (Largest 12 Highlighted)")
 ax.set_aspect('equal')
 ax.legend()
 plt.xlabel("X (ft)")
