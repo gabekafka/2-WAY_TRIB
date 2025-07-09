@@ -15,7 +15,7 @@ bash
 python panelize.py
 
 bash
-tributary.py
+python tributary.py
 
 
 
